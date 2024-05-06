@@ -377,7 +377,7 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "我是你的健康AI助理，你可以问我身心健康的问题，也可以联系我们的健康管理师（13439114167/15313193176）我们会尽力为你解答。",
+    BotHello: "欢迎来到合意健康泛生活，我是你的健康AI助理，你可以问我身心健康的问题，也可以联系我们的健康管理师、心理咨询师（13439114167/15313193176）我们会尽力为你解答。",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
@@ -409,7 +409,7 @@ const cn = {
     Sysmessage: "你是一个助手",
   },
   Mask: {
-    Name: "面具",
+    Name: "问题模板",
     Page: {
       Title: "预设角色面具",
       SubTitle: (count: number) => `${count} 个预设角色定义`,
@@ -454,8 +454,8 @@ const cn = {
     Skip: "直接开始",
     NotShow: "不再展示",
     ConfirmNoShow: "确认禁用？禁用后可以随时在设置中重新启用。",
-    Title: "挑选一个面具",
-    SubTitle: "现在开始，与面具背后的灵魂思维碰撞",
+    Title: "你想让我扮演哪个角色",
+    SubTitle: "现在开始，我会扮演专业人士来解答你的疑问",
     More: "查看全部",
   },
 
