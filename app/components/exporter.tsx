@@ -547,7 +547,7 @@ export function ImagePreviewer(props: {
           </div>
 
           <div>
-            <div className={styles["main-title"]}>ChatGPT Healthy Living</div>
+            <div className={styles["main-title"]}>合意健康泛生活</div>
             <div className={styles["sub-title"]}>
               https://www.aihservice.com/
             </div>
