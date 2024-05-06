@@ -152,10 +152,10 @@ const cn = {
       Title: "字体大小",
       SubTitle: "聊天内容的字体大小",
     },
-    InjectSystemPrompts: {
-      Title: "注入系统级提示信息",
-      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 ChatGPT 的系统提示",
-    },
+    #InjectSystemPrompts: {
+     # Title: "注入系统级提示信息",
+     # SubTitle: "强制给每次请求的消息列表开头添加一个模拟 ChatGPT 的系统提示",
+    #},
     InputTemplate: {
       Title: "用户输入预处理",
       SubTitle: "用户最新的一条消息会填充到此模板",
@@ -362,10 +362,10 @@ const cn = {
       Title: "核采样 (top_p)",
       SubTitle: "与随机性类似，但不要和随机性一起更改",
     },
-    MaxTokens: {
-      Title: "单次回复限制 (max_tokens)",
-      SubTitle: "单次交互所用的最大 Token 数",
-    },
+   # MaxTokens: {
+     # Title: "单次回复限制 (max_tokens)",
+     # SubTitle: "单次交互所用的最大 Token 数",
+   # },
     PresencePenalty: {
       Title: "话题新鲜度 (presence_penalty)",
       SubTitle: "值越大，越有可能扩展到新话题",
