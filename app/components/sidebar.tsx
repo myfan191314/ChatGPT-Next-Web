@@ -3,7 +3,7 @@ import { useEffect, useRef, useMemo } from "react";
 import styles from "./home.module.scss";
 
 import { IconButton } from "./button";
-import SettingsIcon from "../icons/settings.svg";
+// import SettingsIcon from "../icons/settings.svg"; // 注释掉Settings图标
 import GithubIcon from "../icons/github.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
 import AddIcon from "../icons/add.svg";
@@ -15,7 +15,8 @@ import DragIcon from "../icons/drag.svg";
 
 import Locale from "../locales";
 
-import { useAppConfig, useChatStore } from "../store";
+// import { useAppConfig, useChatStore } from "../store"; // 注释掉useAppConfig，保留useChatStore
+import { useChatStore } from "../store";
 
 import {
   DEFAULT_SIDEBAR_WIDTH,
@@ -57,12 +58,14 @@ function useHotKey() {
 function useDragSideBar() {
   const limit = (x: number) => Math.min(MAX_SIDEBAR_WIDTH, x);
 
-  const config = useAppConfig();
+  // const config = useAppConfig(); // 注释掉Settings配置
   const startX = useRef(0);
-  const startDragWidth = useRef(config.sidebarWidth ?? DEFAULT_SIDEBAR_WIDTH);
+  const startDragWidth = useRef(DEFAULT_SIDEBAR_WIDTH); // 修改成默认值
   const lastUpdateTime = useRef(Date.now());
 
   const toggleSideBar = () => {
+    // 注释掉Settings更新逻辑
+    /*
     config.update((config) => {
       if (config.sidebarWidth < MIN_SIDEBAR_WIDTH) {
         config.sidebarWidth = DEFAULT_SIDEBAR_WIDTH;
@@ -70,12 +73,13 @@ function useDragSideBar() {
         config.sidebarWidth = NARROW_SIDEBAR_WIDTH;
       }
     });
+    */
   };
 
   const onDragStart = (e: MouseEvent) => {
     // Remembers the initial width each time the mouse is pressed
     startX.current = e.clientX;
-    startDragWidth.current = config.sidebarWidth;
+    startDragWidth.current = DEFAULT_SIDEBAR_WIDTH; // 修改成默认值
     const dragStartTime = Date.now();
 
     const handleDragMove = (e: MouseEvent) => {
@@ -85,6 +89,8 @@ function useDragSideBar() {
       lastUpdateTime.current = Date.now();
       const d = e.clientX - startX.current;
       const nextWidth = limit(startDragWidth.current + d);
+      // 注释掉Settings更新逻辑
+      /*
       config.update((config) => {
         if (nextWidth < MIN_SIDEBAR_WIDTH) {
           config.sidebarWidth = NARROW_SIDEBAR_WIDTH;
@@ -92,6 +98,7 @@ function useDragSideBar() {
           config.sidebarWidth = nextWidth;
         }
       });
+      */
     };
 
     const handleDragEnd = () => {
@@ -111,16 +118,15 @@ function useDragSideBar() {
   };
 
   const isMobileScreen = useMobileScreen();
-  const shouldNarrow =
-    !isMobileScreen && config.sidebarWidth < MIN_SIDEBAR_WIDTH;
+  const shouldNarrow = !isMobileScreen && DEFAULT_SIDEBAR_WIDTH < MIN_SIDEBAR_WIDTH; // 修改成默认值
 
   useEffect(() => {
     const barWidth = shouldNarrow
       ? NARROW_SIDEBAR_WIDTH
-      : limit(config.sidebarWidth ?? DEFAULT_SIDEBAR_WIDTH);
+      : limit(DEFAULT_SIDEBAR_WIDTH); // 修改成默认值
     const sideBarWidth = isMobileScreen ? "100vw" : `${barWidth}px`;
     document.documentElement.style.setProperty("--sidebar-width", sideBarWidth);
-  }, [config.sidebarWidth, isMobileScreen, shouldNarrow]);
+  }, [isMobileScreen, shouldNarrow]);
 
   return {
     onDragStart,
@@ -134,7 +140,7 @@ export function SideBar(props: { className?: string }) {
   // drag side bar
   const { onDragStart, shouldNarrow } = useDragSideBar();
   const navigate = useNavigate();
-  const config = useAppConfig();
+  // const config = useAppConfig(); // 注释掉Settings配置
   const isMobileScreen = useMobileScreen();
   const isIOSMobile = useMemo(
     () => isIOS() && isMobileScreen,
@@ -155,7 +161,7 @@ export function SideBar(props: { className?: string }) {
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          合意健康泛生活
+          NextChat
         </div>
         <div className={styles["sidebar-sub-title"]}>
           Build your own AI assistant.
@@ -171,11 +177,7 @@ export function SideBar(props: { className?: string }) {
           text={shouldNarrow ? undefined : Locale.Mask.Name}
           className={styles["sidebar-bar-button"]}
           onClick={() => {
-            if (config.dontShowMaskSplashScreen !== true) {
-              navigate(Path.NewChat, { state: { fromHome: true } });
-            } else {
-              navigate(Path.Masks, { state: { fromHome: true } });
-            }
+            navigate(Path.NewChat, { state: { fromHome: true } });
           }}
           shadow
         />
@@ -211,11 +213,14 @@ export function SideBar(props: { className?: string }) {
               }}
             />
           </div>
+          {/* 注释掉Settings相关的代码 */}
+          {/*
           <div className={styles["sidebar-action"]}>
             <Link to={Path.Settings}>
               <IconButton icon={<SettingsIcon />} shadow />
             </Link>
           </div>
+          */}
           <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<GithubIcon />} shadow />
@@ -227,12 +232,8 @@ export function SideBar(props: { className?: string }) {
             icon={<AddIcon />}
             text={shouldNarrow ? undefined : Locale.Home.NewChat}
             onClick={() => {
-              if (config.dontShowMaskSplashScreen) {
-                chatStore.newSession();
-                navigate(Path.Chat);
-              } else {
-                navigate(Path.NewChat);
-              }
+              chatStore.newSession();
+              navigate(Path.Chat);
             }}
             shadow
           />
