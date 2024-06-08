@@ -213,7 +213,7 @@ export function SideBar(props: { className?: string }) {
           </div>
           <div className={styles["sidebar-action"]}>
             {/* 点击settings.svg图标跳转到指定公众号 */}
-            <a href="https://example-public-account-url" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
               <IconButton icon={<SettingsIcon />} shadow />
             </a>
           </div>
