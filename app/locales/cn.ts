@@ -45,7 +45,7 @@ const cn = {
     },
     Commands: {
       new: "新建聊天",
-      newm: "从面具新建聊天",
+     // newm: "从面具新建聊天",
       next: "下一个聊天",
       prev: "上一个聊天",
       clear: "清除上下文",
@@ -60,7 +60,7 @@ const cn = {
         dark: "深色模式",
       },
       Prompt: "快捷指令",
-      Masks: "所有面具",
+     // Masks: "所有面具",
       Clear: "清除聊天",
       Settings: "对话设置",
       UploadImage: "上传图片",
@@ -223,7 +223,7 @@ const cn = {
       },
       ImportFailed: "导入失败",
     },
-    Mask: {
+    //Mask: {
      // Splash: {
        // Title: "面具启动页",
       //  SubTitle: "新建聊天时，展示面具启动页",
@@ -232,7 +232,7 @@ const cn = {
        // Title: "隐藏内置面具",
       //  SubTitle: "在所有面具列表中隐藏内置面具",
     //  },
-    },
+    //},
     Prompt: {
       Disable: {
         Title: "禁用提示词自动补全",
@@ -409,7 +409,7 @@ const cn = {
     Sysmessage: "你是一个助手",
   },
   Mask: {
-    Name: "角色模板",
+    Name: "遇见商城",
     Page: {
       Title: "预设角色面具",
       SubTitle: (count: number) => `${count} 个预设角色定义`,
