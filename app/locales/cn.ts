@@ -4,14 +4,14 @@ import { SubmitKey } from "../store/config";
 const isApp = !!getClientConfig()?.isApp;
 
 const cn = {
-  WIP: "13439114167,15313193176",
+  WIP: "请联系客服13439114167，15313193176",
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确。"
       : "访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码。",
   },
   Auth: {
-    Title: "输入登陆密码",
+    Title: "需要密码",
     Tips: "管理员开启了密码验证，请在下方填入访问码",
     SubTips: "或者输入你的 OpenAI 或 Google API 密钥",
     Input: "在此处填写访问码",
@@ -45,7 +45,7 @@ const cn = {
     },
     Commands: {
       new: "新建聊天",
-     // newm: "从面具新建聊天",
+      newm: "从面具新建聊天",
       next: "下一个聊天",
       prev: "上一个聊天",
       clear: "清除上下文",
@@ -60,7 +60,7 @@ const cn = {
         dark: "深色模式",
       },
       Prompt: "快捷指令",
-     // Masks: "所有面具",
+      Masks: "所有面具",
       Clear: "清除聊天",
       Settings: "对话设置",
       UploadImage: "上传图片",
@@ -377,7 +377,7 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "欢迎来到遇见.心途泛生活，我是你的AI助理，你可以问我关于健康的问题，也可以问我已知道的问题，或者联系我们的客服（13439114167/15313193176）我们会尽力为你解答。",
+    BotHello: "你好，我是心途AI，基于chatGPT40的语言模型，您可以问我关于心理健康方面的问题，或者其他我知道的问题，也可以联系我们客服人员（杨老师13439114167，王老师15313193176)我们会尽力为您解答，请问有什么可以帮你的吗",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
@@ -409,7 +409,7 @@ const cn = {
     Sysmessage: "你是一个助手",
   },
   Mask: {
-    Name: "遇见商城",
+    Name: "预制问词",
     Page: {
       Title: "预设角色面具",
       SubTitle: (count: number) => `${count} 个预设角色定义`,
@@ -454,8 +454,8 @@ const cn = {
     Skip: "直接开始",
     NotShow: "不再展示",
     ConfirmNoShow: "确认禁用？禁用后可以随时在设置中重新启用。",
-    Title: "你想让我扮演哪个角色",
-    SubTitle: "现在开始，我会扮演专业人士来解答你的疑问",
+    Title: "挑选一个预设问词",
+    SubTitle: "现在开始，与面具背后的灵魂思维碰撞",
     More: "查看全部",
   },
 
