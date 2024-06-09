@@ -427,7 +427,7 @@ const cn = {
     EditModal: {
       Title: (readonly: boolean) =>
         `编辑预设面具 ${readonly ? "（只读）" : ""}`,
-      Download: "下载预设",
+      //Download: "下载预设",
       Clone: "克隆预设",
     },
     Config: {
