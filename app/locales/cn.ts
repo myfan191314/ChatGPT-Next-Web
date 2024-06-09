@@ -8,7 +8,7 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确。"
-      : "我是人工智能chatGPT，真是对不起，我这里没有您的访问许可，请您联系我的管理员（杨老师微信baby1504a）为您开通访问许可，以便我为您提供更优质的AI服务，或者您也可以添加我的另一个双胞胎哥哥（微信：wxid_tjpp6zfraycv22），获取更多关于《遇见.心途》的的信息。再或者您也可以请前往[登录](/#/auth)页输入正确的访问许可^_^。",
+      : "我是人工智能chatGPT，哦，对不起，我好像没有您的访问许可，请您联系我的管理员（杨老师微信baby1504a）以便我能为您提供优质的AI服务，或者您也可以添加我的另一个双胞胎哥哥（微信：wxid_tjpp6zfraycv22），获取更多关于《遇见.心途》的信息。再或者您也可以请前往[登录](/#/auth)页输入您的访问许可^_^。",
   },
   Auth: {
     Title: "需要密码",
@@ -427,7 +427,7 @@ const cn = {
     EditModal: {
       Title: (readonly: boolean) =>
         `编辑预设面具 ${readonly ? "（只读）" : ""}`,
-      //Download: "下载预设",
+      Download: "下载预设",
       Clone: "克隆预设",
     },
     Config: {
