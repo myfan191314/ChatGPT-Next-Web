@@ -73,7 +73,7 @@ function useDragSideBar() {
   };
 
   const onDragStart = (e: MouseEvent) => {
-    // 记录每次鼠标按下时的初始宽度
+    // Remembers the initial width each time the mouse is pressed
     startX.current = e.clientX;
     startDragWidth.current = config.sidebarWidth;
     const dragStartTime = Date.now();
@@ -95,11 +95,11 @@ function useDragSideBar() {
     };
 
     const handleDragEnd = () => {
-      // 在useRef中数据是非响应的，所以`config.sidebarWidth`无法获得动态sidebarWidth
+      // In useRef the data is non-responsive, so `config.sidebarWidth` can't get the dynamic sidebarWidth
       window.removeEventListener("pointermove", handleDragMove);
       window.removeEventListener("pointerup", handleDragEnd);
 
-      // 如果用户点击了拖动图标，则应切换侧边栏
+      // if user click the drag icon, should toggle the sidebar
       const shouldFireClick = Date.now() - dragStartTime < 300;
       if (shouldFireClick) {
         toggleSideBar();
@@ -131,7 +131,7 @@ function useDragSideBar() {
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
 
-  // 拖动侧边栏
+  // drag side bar
   const { onDragStart, shouldNarrow } = useDragSideBar();
   const navigate = useNavigate();
   const config = useAppConfig();
@@ -149,16 +149,16 @@ export function SideBar(props: { className?: string }) {
         shouldNarrow && styles["narrow-sidebar"]
       }`}
       style={{
-        // #3016 禁用在iOS移动屏幕上的过渡效果
+        // #3016 disable transition on ios mobile screen
         transition: isMobileScreen && isIOSMobile ? "none" : undefined,
       }}
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          遇见.心途
+          NextChat
         </div>
         <div className={styles["sidebar-sub-title"]}>
-          您的专属AI助理
+          Build your own AI assistant.
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
@@ -212,10 +212,9 @@ export function SideBar(props: { className?: string }) {
             />
           </div>
           <div className={styles["sidebar-action"]}>
-            {/* 点击settings.svg图标跳转到指定公众号 */}
-            <a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
+            <Link to={Path.Settings}>
               <IconButton icon={<SettingsIcon />} shadow />
-            </a>
+            </Link>
           </div>
           <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
