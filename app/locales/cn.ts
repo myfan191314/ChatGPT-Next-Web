@@ -26,14 +26,14 @@ const cn = {
     EditMessage: {
       Title: "编辑消息记录",
       Topic: {
-        Title: "聊天主题",
-        SubTitle: "更改当前聊天主题",
+        Title: "对话主题",
+        SubTitle: "更改当前对话主题",
       },
     },
     Actions: {
       ChatList: "查看消息列表",
       CompressedHistory: "查看压缩后的历史 Prompt",
-      Export: "导出聊天记录",
+      Export: "导出对话记录",
       Copy: "复制",
       Stop: "停止",
       Retry: "重试",
@@ -44,12 +44,12 @@ const cn = {
       Edit: "编辑",
     },
     Commands: {
-      new: "新建聊天",
-      newm: "从面具新建聊天",
-      next: "下一个聊天",
-      prev: "上一个聊天",
+      new: "新建对话",
+      newm: "从问词新建对话",
+      next: "下一个对话",
+      prev: "上一个对话",
       clear: "清除上下文",
-      del: "删除聊天",
+      del: "删除对话",
     },
     InputActions: {
       Stop: "停止响应",
@@ -60,8 +60,8 @@ const cn = {
         dark: "深色模式",
       },
       Prompt: "快捷指令",
-      Masks: "所有面具",
-      Clear: "清除聊天",
+      Masks: "所有问词",
+      Clear: "清除对话",
       Settings: "对话设置",
       UploadImage: "上传图片",
     },
@@ -77,12 +77,12 @@ const cn = {
     Send: "发送",
     Config: {
       Reset: "清除记忆",
-      SaveAs: "存为面具",
+      SaveAs: "存为问词",
     },
     IsContext: "预设提示词",
   },
   Export: {
-    Title: "分享聊天记录",
+    Title: "分享对话记录",
     Copy: "全部复制",
     Download: "下载文件",
     Share: "分享到 ShareGPT",
@@ -93,8 +93,8 @@ const cn = {
       SubTitle: "可以导出 Markdown 文本或者 PNG 图片",
     },
     IncludeContext: {
-      Title: "包含面具上下文",
-      SubTitle: "是否在消息中展示面具上下文",
+      Title: "包含问词上下文",
+      SubTitle: "是否在消息中展示问词上下文",
     },
     Steps: {
       Select: "选取",
@@ -114,13 +114,13 @@ const cn = {
   Memory: {
     Title: "历史摘要",
     EmptyContent: "对话内容过短，无需总结",
-    Send: "自动压缩聊天记录并作为上下文发送",
+    Send: "自动压缩对话记录并作为上下文发送",
     Copy: "复制摘要",
     Reset: "[unused]",
     ResetConfirm: "确认清空历史摘要？",
   },
   Home: {
-    NewChat: "新的聊天",
+    NewChat: "新的对话",
     DeleteChat: "确认删除选中的对话？",
     DeleteToast: "已删除会话",
     Revert: "撤销",
@@ -138,9 +138,9 @@ const cn = {
       },
       Clear: {
         Title: "清除所有数据",
-        SubTitle: "清除所有聊天、设置数据",
+        SubTitle: "清除所有对话、设置数据",
         Action: "立即清除",
-        Confirm: "确认清除所有聊天、设置数据？",
+        Confirm: "确认清除所有对话、设置数据？",
       },
     },
     Lang: {
@@ -150,7 +150,7 @@ const cn = {
     Avatar: "头像",
     FontSize: {
       Title: "字体大小",
-      SubTitle: "聊天内容的字体大小",
+      SubTitle: "对话内容的字体大小",
     },
     InjectSystemPrompts: {
       Title: "注入系统级提示信息",
@@ -219,18 +219,18 @@ const cn = {
 
       LocalState: "本地数据",
       Overview: (overview: any) => {
-        return `${overview.chat} 次对话，${overview.message} 条消息，${overview.prompt} 条提示词，${overview.mask} 个面具`;
+        return `${overview.chat} 次对话，${overview.message} 条消息，${overview.prompt} 条提示词，${overview.mask} 个问词`;
       },
       ImportFailed: "导入失败",
     },
     Mask: {
       Splash: {
-        Title: "面具启动页",
-        SubTitle: "新建聊天时，展示面具启动页",
+        Title: "问词启动页",
+        SubTitle: "新建对话时，展示问词启动页",
       },
       Builtin: {
-        Title: "隐藏内置面具",
-        SubTitle: "在所有面具列表中隐藏内置面具",
+        Title: "隐藏内置问词",
+        SubTitle: "在所有问词列表中隐藏内置问词",
       },
     },
     Prompt: {
@@ -376,11 +376,11 @@ const cn = {
     },
   },
   Store: {
-    DefaultTopic: "新的聊天",
+    DefaultTopic: "新的对话",
     BotHello: "你好，我是心途AI，基于chatGPT40的语言模型，您可以问我关于心理健康方面的问题，或者其他我知道的问题，也可以联系我们客服人员（杨老师13439114167，王老师15313193176)我们会尽力为您解答，请问有什么可以帮你的吗",
     Error: "出错了，稍后重试吧",
     Prompt: {
-      History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
+      History: (content: string) => "这是历史对话总结作为前情提要：" + content,
       Topic:
         "使用四到五个字直接返回这句话的简要主题，不要解释、不要标点、不要语气词、不要多余文本，不要加粗，如果没有主题，请直接返回“闲聊”",
       Summarize:
@@ -411,9 +411,9 @@ const cn = {
   Mask: {
     Name: "预制问词",
     Page: {
-      Title: "预设角色面具",
+      Title: "预设问词",
       SubTitle: (count: number) => `${count} 个预设角色定义`,
-      Search: "搜索角色面具",
+      Search: "搜索角色问词",
       Create: "新建",
     },
     Item: {
@@ -426,7 +426,7 @@ const cn = {
     },
     EditModal: {
       Title: (readonly: boolean) =>
-        `编辑预设面具 ${readonly ? "（只读）" : ""}`,
+        `编辑预设问词 ${readonly ? "（只读）" : ""}`,
       Download: "下载预设",
       Clone: "克隆预设",
     },
@@ -440,11 +440,11 @@ const cn = {
       },
       HideContext: {
         Title: "隐藏预设对话",
-        SubTitle: "隐藏后预设对话不会出现在聊天界面",
+        SubTitle: "隐藏后预设对话不会出现在对话界面",
       },
       Share: {
-        Title: "分享此面具",
-        SubTitle: "生成此面具的直达链接",
+        Title: "分享此问词",
+        SubTitle: "生成此问词的直达链接",
         Action: "复制链接",
       },
     },
@@ -455,7 +455,7 @@ const cn = {
     NotShow: "不再展示",
     ConfirmNoShow: "确认禁用？禁用后可以随时在设置中重新启用。",
     Title: "挑选一个预设问词",
-    SubTitle: "现在开始，与面具背后的灵魂思维碰撞",
+    SubTitle: "现在开始，选择我为您准备好的问词，开始和我对话吧！",
     More: "查看全部",
   },
 
