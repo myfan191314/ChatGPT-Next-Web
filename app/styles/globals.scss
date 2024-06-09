@@ -95,7 +95,7 @@ html {
 }
 
 body {
-  background: linear-gradient(to bottom, #7fffd4, #87cefa); /* 浅绿色与天蓝色渐变背景 */
+  background-color: var(--gray);
   color: var(--black);
   margin: 0;
   padding: 0;
