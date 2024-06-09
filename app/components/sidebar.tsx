@@ -1,7 +1,5 @@
 import { useEffect, useRef, useMemo } from "react";
-
 import styles from "./home.module.scss";
-
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
@@ -14,9 +12,7 @@ import PluginIcon from "../icons/plugin.svg";
 import DragIcon from "../icons/drag.svg";
 
 import Locale from "../locales";
-
 import { useAppConfig, useChatStore } from "../store";
-
 import {
   DEFAULT_SIDEBAR_WIDTH,
   MAX_SIDEBAR_WIDTH,
@@ -25,7 +21,6 @@ import {
   Path,
   REPO_URL,
 } from "../constant";
-
 import { Link, useNavigate } from "react-router-dom";
 import { isIOS, useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
@@ -51,7 +46,7 @@ function useHotKey() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  });
+  }, [chatStore]);
 }
 
 function useDragSideBar() {
@@ -213,11 +208,16 @@ export function SideBar(props: { className?: string }) {
           </div>
           <div className={styles["sidebar-action"]}>
             <Link to={Path.Settings}>
-              <IconButton icon={<SettingsIcon />} shadow />
+              <IconButton
+                icon={<SettingsIcon />}
+                shadow
+                onClick={() => {
+                  window.location.href = "https://example-public-account-url";
+                }}
+              />
             </Link>
           </div>
           <div className={styles["sidebar-action"]}>
-             {/* 点击settings.svg图标跳转到指定公众号 */}
             <a href="https://example-public-account-url" target="_blank" rel="noopener noreferrer">
               <IconButton icon={<GithubIcon />} shadow />
             </a>
