@@ -1,5 +1,7 @@
 import { useEffect, useRef, useMemo } from "react";
+
 import styles from "./home.module.scss";
+
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
@@ -12,7 +14,9 @@ import PluginIcon from "../icons/plugin.svg";
 import DragIcon from "../icons/drag.svg";
 
 import Locale from "../locales";
+
 import { useAppConfig, useChatStore } from "../store";
+
 import {
   DEFAULT_SIDEBAR_WIDTH,
   MAX_SIDEBAR_WIDTH,
@@ -21,6 +25,7 @@ import {
   Path,
   REPO_URL,
 } from "../constant";
+
 import { Link, useNavigate } from "react-router-dom";
 import { isIOS, useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
@@ -46,7 +51,7 @@ function useHotKey() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [chatStore]);
+  });
 }
 
 function useDragSideBar() {
@@ -68,7 +73,7 @@ function useDragSideBar() {
   };
 
   const onDragStart = (e: MouseEvent) => {
-    // Remembers the initial width each time the mouse is pressed
+    // 记录每次鼠标按下时的初始宽度
     startX.current = e.clientX;
     startDragWidth.current = config.sidebarWidth;
     const dragStartTime = Date.now();
@@ -90,11 +95,11 @@ function useDragSideBar() {
     };
 
     const handleDragEnd = () => {
-      // In useRef the data is non-responsive, so `config.sidebarWidth` can't get the dynamic sidebarWidth
+      // 在useRef中数据是非响应的，所以`config.sidebarWidth`无法获得动态sidebarWidth
       window.removeEventListener("pointermove", handleDragMove);
       window.removeEventListener("pointerup", handleDragEnd);
 
-      // if user click the drag icon, should toggle the sidebar
+      // 如果用户点击了拖动图标，则应切换侧边栏
       const shouldFireClick = Date.now() - dragStartTime < 300;
       if (shouldFireClick) {
         toggleSideBar();
@@ -126,7 +131,7 @@ function useDragSideBar() {
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
 
-  // drag side bar
+  // 拖动侧边栏
   const { onDragStart, shouldNarrow } = useDragSideBar();
   const navigate = useNavigate();
   const config = useAppConfig();
@@ -144,13 +149,13 @@ export function SideBar(props: { className?: string }) {
         shouldNarrow && styles["narrow-sidebar"]
       }`}
       style={{
-        // #3016 disable transition on ios mobile screen
+        // #3016 禁用在iOS移动屏幕上的过渡效果
         transition: isMobileScreen && isIOSMobile ? "none" : undefined,
       }}
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          遇见.心途
+          NextChat
         </div>
         <div className={styles["sidebar-sub-title"]}>
           Build your own AI assistant.
@@ -207,18 +212,13 @@ export function SideBar(props: { className?: string }) {
             />
           </div>
           <div className={styles["sidebar-action"]}>
-            <Link to={Path.Settings}>
-              <IconButton
-                icon={<SettingsIcon />}
-                shadow
-                onClick={() => {
-                  window.location.href = "https://example-public-account-url";
-                }}
-              />
-            </Link>
+            {/* 点击settings.svg图标跳转到指定公众号 */}
+            <a href="https://example-public-account-url" target="_blank" rel="noopener noreferrer">
+              <IconButton icon={<SettingsIcon />} shadow />
+            </a>
           </div>
           <div className={styles["sidebar-action"]}>
-            <a href="https://example-public-account-url" target="_blank" rel="noopener noreferrer">
+            <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<GithubIcon />} shadow />
             </a>
           </div>
