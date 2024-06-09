@@ -8,7 +8,7 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确。"
-      : "访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。",
+      : "访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码。",
   },
   Auth: {
     Title: "输入登陆密码",
@@ -224,14 +224,14 @@ const cn = {
       ImportFailed: "导入失败",
     },
     Mask: {
-      Splash: {
-        Title: "面具启动页",
-        SubTitle: "新建聊天时，展示面具启动页",
-      },
-      Builtin: {
-        Title: "隐藏内置面具",
-        SubTitle: "在所有面具列表中隐藏内置面具",
-      },
+     // Splash: {
+       // Title: "面具启动页",
+      //  SubTitle: "新建聊天时，展示面具启动页",
+     // },
+     // Builtin: {
+       // Title: "隐藏内置面具",
+      //  SubTitle: "在所有面具列表中隐藏内置面具",
+    //  },
     },
     Prompt: {
       Disable: {
@@ -377,7 +377,7 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "欢迎来到合意健康泛生活，我是你的健康AI助理，你可以问我身心健康的问题，也可以联系我们的健康管理师、心理咨询师（13439114167/15313193176）我们会尽力为你解答。",
+    BotHello: "欢迎来到遇见.心途泛生活，我是你的AI助理，你可以问我关于健康的问题，也可以问我已知道的问题，或者联系我们的客服（13439114167/15313193176）我们会尽力为你解答。",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
